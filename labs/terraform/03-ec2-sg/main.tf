@@ -2,9 +2,9 @@ resource "aws_security_group" "example" {
   name = "my-test-sg"
 
   ingress {
-    from_port = 80
-    to_port   = 80
-    protocol  = "tcp"
+    from_port   = 80
+    to_port     = 80
+    protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
 
@@ -18,10 +18,10 @@ resource "aws_security_group" "example" {
 }
 
 resource "aws_instance" "myec2" {
-  ami           = "ami-08a52ddb321b32a8c"
-  instance_type = "t2.micro"
-  key_name      = "devops"
-  vpc_security_group_ids = [aws_security_group.example.id ] 
+  ami                    = "ami-08a52ddb321b32a8c"
+  instance_type          = "t2.micro"
+  key_name               = "devops-course-2023"
+  vpc_security_group_ids = [aws_security_group.example.id]
 
   tags = {
     Name = "tf-example"
