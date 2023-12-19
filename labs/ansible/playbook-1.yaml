@@ -1,5 +1,5 @@
 - name: Play 1
-  hosts: webservers
+  hosts: host1
   become: yes
   tasks:
     - name: Execute command 'date'
