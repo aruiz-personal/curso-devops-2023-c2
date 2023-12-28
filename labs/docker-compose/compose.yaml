@@ -1,0 +1,15 @@
+services:
+  python-app:
+    image: nginx
+    container_name: nginx-test-1
+
+  mysql:
+    image: mysql
+    container_name: mysql-test
+
+  nginx:
+    image: nginx
+    container_name: nginx-test-2
+
+# Ejemplo para crear 3 contenedores con compose.
+# Correr con: docker-compose up -d

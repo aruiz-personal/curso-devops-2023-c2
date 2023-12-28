@@ -1,0 +1,15 @@
+services:
+  python-app:
+    image: asruiz1235/python-app:v1
+    container_name: python-app
+    ports:
+      - "5000:5000"
+
+  mysql:
+    image: mysql
+    container_name: mysql-test
+
+  nginx:
+    image: nginx
+    container_name: nginx-test
+
