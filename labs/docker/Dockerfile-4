@@ -1,0 +1,2 @@
+FROM ubuntu
+RUN dd if=/dev/zero of=/root/file.txt bs=1M count=100 && rm -f /root/file.txt
