@@ -22,7 +22,7 @@ def ping():
     Respond with a 'pong' string.
     """
     # Devuelve la cadena "pong" como respuesta a la ruta '/ping'.
-    return "pong"
+    return "pong 2"
 
 # Verifica si el archivo actual está siendo ejecutado como el programa principal.
 if __name__ == '__main__':
