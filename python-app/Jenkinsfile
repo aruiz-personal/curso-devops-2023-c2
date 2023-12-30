@@ -21,14 +21,9 @@ pipeline {
             }
         }
 
-        stage('Manual approval') {
-            steps {
-                input message: 'Continue?'
-            }
-        }
-
         stage("Docker run"){
             steps{
+                input message: 'Continue?'
                 sh """
                 if docker ps -a | grep -q ${env.NameContainer}; then 
                     docker stop ${env.NameContainer} && docker rm ${env.NameContainer}
