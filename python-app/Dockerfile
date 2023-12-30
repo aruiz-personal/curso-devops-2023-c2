@@ -17,5 +17,3 @@ EXPOSE 5000
 
 #Usamos gunicorn como web server:
 CMD ["gunicorn", "--bind", "0.0.0.0:5000", "app:app"]
-
-RUN touch text.txt && rm test.txt
