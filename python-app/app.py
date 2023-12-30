@@ -19,7 +19,7 @@ def home():
 @app.route('/ping')
 def ping():
     """
-    Respond with a 'pong 2' string.
+    Respond with a 'pong' string.
     """
     # Devuelve la cadena "pong" como respuesta a la ruta '/ping'.
     return "pong"

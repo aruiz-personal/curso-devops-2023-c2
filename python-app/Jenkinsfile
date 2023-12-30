@@ -25,6 +25,12 @@ pipeline {
             }
         }
 
+        stage('Manual approval') {
+            steps {
+                input message: 'Continue?'
+            }
+        }
+
         stage("Docker run"){
             steps{
                 sh """
