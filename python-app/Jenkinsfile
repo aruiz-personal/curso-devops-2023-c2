@@ -1,0 +1,43 @@
+pipeline {
+    agent any
+    environment{
+        IMAGE_NAME = "asruiz1235/python-app"
+        DOCKERHUB_CREDS = credentials('dockerhub')
+        RepoDockerHub = 'asruiz1235'
+        NameContainer = 'python-app'
+    }
+
+    stages {
+        stage('Build image') {
+            steps {
+                sh 'docker build -t ${IMAGE_NAME}:${BUILD_NUMBER} ./python-app'
+            }
+        }
+        stage("Docker login"){
+            steps{
+                sh 'echo ${DOCKERHUB_CREDS_PSW} | docker login -u ${DOCKERHUB_CREDS_USR} --password-stdin'
+            }
+        }
+
+        stage("Docker push"){
+            steps{
+                sh 'docker push ${IMAGE_NAME}:${BUILD_NUMBER}'
+            }
+        }
+
+        stage("Docker run"){
+            steps{
+                sh "if [ 'docker stop ${env.NameContainer}' ] ; then docker rm -f ${env.NameContainer}
+                && docker run -d --name ${env.NameContainer} -p 5000:5000
+                ${env.RepoDockerHub}/${env.NameContainer}:${env.BUILD_NUMBER} ; else docker run -d --name
+                python-app -p 5000:5000 ${env.RepoDockerHub}/${env.NameContainer}:${env.BUILD_NUMBER} ; fi"
+            }
+        }
+    }
+        post {
+            always {
+                sh 'docker logout'
+            }
+        }  
+        
+}
