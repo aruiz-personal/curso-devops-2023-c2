@@ -1,0 +1,16 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Copy git repo') {
+            steps {
+                git branch: 'main', credentialsId: 'github', url: 'https://github.com/aruiz-personal/curso-devops-2023.git'
+            }
+        }
+        stage('Display readme') {
+            steps {
+                sh 'cat README.md'
+            }
+        }
+    }
+}
