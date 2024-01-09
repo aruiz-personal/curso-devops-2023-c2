@@ -1,7 +1,7 @@
 apiVersion: apps/v1
-kind: ReplicaSet
+kind: Deployment
 metadata:
-  name: myapp-replicaset
+  name: myapp-deployment
   labels:
     app: myapp
     type: front-end
@@ -15,8 +15,8 @@ spec:
     spec:
       containers:
       - name: nginx-container
-        image: nginx
-  replicas: 2
+        image: nginx:1.24.0-perl
+  replicas: 3
   selector:
     matchLabels:
       type: front-end
